@@ -1,0 +1,152 @@
+DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NIXA AI</title>
+
+<style>
+body {
+  background: #080d1b;
+  color: white;
+  font-family: Arial;
+  text-align: center;
+  margin: 0;
+  padding: 25px 15px;
+}
+
+h1 {
+  color: #00d9ff;
+  font-size: 45px;
+}
+
+p {
+  color: #b5c5d8;
+}
+
+#chat {
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.message {
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 12px;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.user {
+  background: #12304b;
+}
+
+.bot {
+  background: #172033;
+  border: 1px solid #00d9ff;
+}
+
+textarea {
+  width: 90%;
+  height: 90px;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 17px;
+}
+
+button {
+  background: #00d9ff;
+  padding: 13px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  margin: 8px;
+}
+
+#status {
+  color: #00d9ff;
+}
+</style>
+</head>
+
+<body>
+
+<h1>NIXA</h1>
+
+<h2>Future of Artificial Intelligence</h2>
+
+<p>Your AI. Your World.</p>
+
+<div id="chat"></div>
+
+<p id="status"></p>
+
+<textarea id="question"
+placeholder="Ask anything..."></textarea>
+
+<br>
+
+<button onclick="askNixa()">Ask NIXA</button>
+
+<button onclick="clearChat()">Clear Chat</button>
+
+<script>
+
+function addMessage(text, type) {
+
+  let chat = document.getElementById("chat");
+
+  let msg = document.createElement("div");
+
+  msg.className = "message " + type;
+
+  msg.textContent = text;
+
+  chat.appendChild(msg);
+}
+
+function askNixa() {
+
+  let input = document.getElementById("question");
+
+  let question = input.value.trim();
+
+  if (!question) {
+    alert("Please enter your question!");
+    return;
+  }
+
+  addMessage("You: " + question, "user");
+
+  input.value = "";
+
+  let status = document.getElementById("status");
+
+  status.innerText = "NIXA is thinking...";
+
+  setTimeout(function() {
+
+    addMessage(
+      "Welcome to NIXA! Your AI assistant is under development. Real AI connection is coming soon.",
+      "bot"
+    );
+
+    status.innerText = "";
+
+  }, 1200);
+
+}
+
+function clearChat() {
+
+  document.getElementById("chat").innerHTML = "";
+
+  document.getElementById("status").innerText = "";
+
+}
+
+</script>
+
+</body>
+</html>
